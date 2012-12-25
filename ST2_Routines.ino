@@ -170,7 +170,7 @@ void DisplayUTCTimeSub()
   if(NextSUBStateRequest)
   {
     SUBSTATE = SUBSTATE +1;
-    if(SUBSTATE>5)
+    if(SUBSTATE>4)
     {
       SUBSTATE =1;
     }
@@ -208,21 +208,16 @@ void DisplayUTCTimeSub()
     writeTime(UTCHourTens, UTCHourOnes, MinTens, MinOnes);
     break;
 
-  case 2:              // Day
- //   checkDate();
-    displayStringDay(UTCDays -1);
-    break;
-
-  case 3:              // Month
+  case 2:              // Month
     displayMonth(UTCMonthCode-1);
     break;      
 
-  case 4:              // Date
+  case 3:              // Date
     displayDate(true);
     delay(100);
     break;  
 
-  case 5:              // Year
+  case 4:              // Year
 
     displayYear(true);
     break;

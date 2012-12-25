@@ -10,7 +10,9 @@
 //    invalid dates.
 // 3. Alarm function is likely broken. Ideally it should be set in local time and translated into UTC.
 // 4. Entry of leap second info in Set function.
-
+// 5. Consider using EEPROM to store config info like 12/24 (because the RTC is always in 24 hour mode),
+//    TZ offset, and leap seconds (when implemented.)
+// 6. Possibly consider automatic adjustment for DST and/or a DST mode.
 //
 // Changes:
 // 1. Removed Worm and Text modes.
@@ -24,6 +26,10 @@
 // 8. Changed Set mode to zero Seconds in the RTC whenever the Minute is set. This allows for accurate time setting.
 //    Note, however, that we only check the RTC every 2000 updates, so rollover might have some delay.
 // 9. Removed annoying "Nite" text and delay when watch goes to sleep.
+// 10. Removed code that resets the time each time the Arduino is rebooted. I'm not sure what function it
+//     ever really served, and it makes development more difficult.
+// 11. Changed UTC mode so day of week isn't displayed. (Note: The RTC still stores this, and it is important
+//     to read it from the RTC, since this gets converted to the local day of the week.)
 //
 //    DEMO MODE NOTES
 //
